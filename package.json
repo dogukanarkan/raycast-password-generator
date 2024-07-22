@@ -6,7 +6,8 @@
   "icon": "password-generator-icon.png",
   "author": "joshuaiz",
   "contributors": [
-    "teziovsky"
+    "teziovsky",
+    "dogukan_arkan"
   ],
   "categories": [
     "Productivity",
@@ -18,26 +19,55 @@
       "name": "generate-password",
       "title": "Generate Password",
       "description": "Generates a password from 5–32 characters in length with options for case, numbers, special characters, and more.",
-      "mode": "view",
+      "mode": "view"
+    },
+    {
+      "name": "quick-generate-password",
+      "title": "Quick Generate Password",
+      "description": "Quickly gnerates a password from 5–64 characters in length with options for case, numbers, special characters, and more.",
+      "mode": "no-view",
       "preferences": [
         {
-          "name": "hideAfterCopy",
-          "description": "Hide the raycast panel after it's copied to the clipboard.",
-          "type": "checkbox",
-          "required": false,
-          "default": false,
-          "title": "Options",
-          "label": "Hide Raycast after copy"
+          "name": "length",
+          "title": "Length",
+          "description": "Enter a number between 5 and 64",
+          "type": "textfield",
+          "required": true
         },
         {
-          "name": "storePasswordLength",
-          "description": "Persist the last password length between runs.",
+          "name": "useNumbers",
+          "title": "Use Numbers?",
+          "description": "Add numbers to the password.",
           "type": "checkbox",
-          "required": false,
-          "default": false,
-          "label": "Store password length"
+          "required": true
+        },
+        {
+          "name": "useChars",
+          "title": "Use Special Characters?",
+          "description": "Add special characters to the password.",
+          "type": "checkbox",
+          "required": true
         }
       ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "hideAfterCopy",
+      "description": "Hide the raycast panel after it's copied to the clipboard.",
+      "type": "checkbox",
+      "required": false,
+      "default": false,
+      "title": "Options",
+      "label": "Hide Raycast after copy"
+    },
+    {
+      "name": "storePasswordSettings",
+      "description": "Persist the last password settings between runs.",
+      "type": "checkbox",
+      "required": false,
+      "default": false,
+      "label": "Store password settings"
     }
   ],
   "dependencies": {

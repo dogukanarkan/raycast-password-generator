@@ -14,7 +14,7 @@ import { generatePassword } from "@/helpers/helpers";
 
 interface Preferences {
   hideAfterCopy: boolean;
-  storePasswordLength: boolean;
+  storePasswordSettings: boolean;
 }
 
 interface Form {
@@ -54,7 +54,7 @@ const handleGeneratePassword = (values: Form) => {
   if (hideAfterCopy) {
     showHUD(`Copied Password - ${generatedPassword} 🎉`, {
       clearRootSearch: false,
-      popToRootType: PopToRootType.Suspended,
+      popToRootType: PopToRootType.Default,
     });
   } else {
     showToast(Toast.Style.Success, "Copied Password 🎉", generatedPassword);
@@ -62,7 +62,7 @@ const handleGeneratePassword = (values: Form) => {
 };
 
 export default function Command() {
-  const { storePasswordLength } = getPreferenceValues<Preferences>();
+  const { storePasswordSettings } = getPreferenceValues<Preferences>();
 
   return (
     <Form
@@ -77,10 +77,19 @@ export default function Command() {
         id="length"
         title="Enter password length (number of characters):"
         placeholder="Enter a number between 5 and 64"
-        storeValue={storePasswordLength}
+        storeValue={storePasswordSettings}
       />
-      <Form.Checkbox id="useNumbers" label="Use numbers?" defaultValue={true} />
-      <Form.Checkbox id="useChars" label="Use special characters?" defaultValue={true} />
-    </Form>
-  );
+      <Form.Checkbox
+        id="useNumbers"
+        label="Use numbers?"
+        defaultValue={true}
+        storeValue={storePasswordSettings}
+      />
+      <Form.Checkbox
+        id="useChars"
+        label="Use special characters?"
+        defaultValue={true}
+        storeValue={storePasswordSettings}
+      />
+    </Form>);
 }
